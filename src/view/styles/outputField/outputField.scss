@@ -1,0 +1,28 @@
+@import '../variables/variablesForLightTheme.scss';
+@import '../variables/mainVariables.scss';
+
+.calculator__result-output {
+  display: flex;
+  top: 270px;
+  font-weight: 700;
+
+  &_equal {
+    display: flex;
+    display: block;
+    text-align: center;
+    width: 70px;
+    line-height: 70px;
+    height: 70px;
+    margin-left: 34px;
+  }
+
+  &_result {
+    text-align: right;
+    width: 165px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 40px;
+    line-height: 60px;
+    margin-left: 120px;
+  }
+}

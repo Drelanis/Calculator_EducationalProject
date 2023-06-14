@@ -1,0 +1,15 @@
+.calculator__options_engineer {
+  display: flex;
+  width: 35px;
+  height: 35px;
+  margin: 59px 85px 0 31px;
+
+  .fa-square-root-variable {
+    font-size: $main-font-size-for-icons;
+    margin: auto;
+  }
+  .fa-square-root-variable:hover {
+    font-size: 25px;
+    cursor: $main-cursor-type-for-buttons;
+  }
+}
