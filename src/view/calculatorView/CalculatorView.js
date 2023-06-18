@@ -1,5 +1,10 @@
-import { rootsClassNames } from './classNames/rootsClassNames';
-import { htmlElements } from './config/config';
+import {
+  classNamesForExtraSetting,
+  inputClassNames,
+  outputClassNames,
+  rootsClassNames,
+} from './classNames/rootsClassNames';
+import { eventsType, htmlElements } from './config/config';
 import BaseElement from './elements/baseElement/BaseElement';
 import ControlButtons from './elements/controlButtons/ControlButtons';
 import Input from './elements/input/Input';
@@ -7,17 +12,27 @@ import Options from './elements/options/Options';
 import Output from './elements/output/Output';
 
 class CalculatorView extends BaseElement {
-  construct() {}
+  constructor(model) {
+    super();
+    this.model = model;
+  }
 
   render() {
     const root = this.getElementByClassName(rootsClassNames.mainRoot);
     const calculatorBody = this.createCalculatorBody();
     root.append(calculatorBody);
-    const mainButtons = new ControlButtons();
+    const mainButtons = new ControlButtons(this.model);
     new Options(mainButtons).render();
     new Input().render();
     new Output().render();
     mainButtons.render();
+    this.model.addSubscribe('newMathResult', this.renderResult);
+  }
+
+  renderResult(result) {
+    const outputField = document.querySelector(`.${outputClassNames.resultField}`);
+    outputField.textContent = '';
+    outputField.textContent += result;
   }
 
   createCalculatorBody() {

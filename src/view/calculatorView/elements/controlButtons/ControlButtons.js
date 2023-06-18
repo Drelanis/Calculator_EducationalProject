@@ -7,8 +7,9 @@ import BaseElement from '../../elements/baseElement/BaseElement';
 import ExtraActions from '../extraActions/ExtraActions';
 
 class ControlButtons extends BaseElement {
-  constructor() {
+  constructor(model) {
     super();
+    this.model = model;
     this.containerForControllButtons = this.getElementByClassName(
       `${rootsClassNames.rootForControllButtons}`,
     );
@@ -19,7 +20,7 @@ class ControlButtons extends BaseElement {
     this.renderNumbers();
     this.renderTopOperators();
     this.renderRightOperators();
-    new ExtraActions().setEvents();
+    new ExtraActions(this.model).setEvents();
   }
 
   renderNumbers() {

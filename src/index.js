@@ -1,11 +1,15 @@
 import './view/styles/index.scss';
 import CalculatorView from './view/calculatorView/CalculatorView';
 import calculate from './calculator/calculate/calculate';
+import Model from './model/Model';
+import Controller from './controller/Controller';
 
-new CalculatorView().render();
+const model = new Model();
+console.log(model);
+new Controller(model).controllerInit();
+new CalculatorView(model).render();
 
 console.log(calculate('(2+3)*4'));
-
 const tests = [
   { number: 1, input: '2-(sin(pi/2)*(-6))', expected: 8 },
   { number: 2, input: '√9+3', expected: 6 },
@@ -38,7 +42,7 @@ const tests = [
   { number: 30, input: '5.5 - 2.2', expected: 3.3 },
 ];
 
-tests.forEach((test, index) => {
-  const result = Number(calculate(test.input));
-  console.log(`Test ${test.number}: ${result === test.expected ? 'passed' : 'failed'}`);
-});
+// tests.forEach((test, index) => {
+//   const result = Number(calculate(test.input));
+//   console.log(`Test ${test.number}: ${result === test.expected ? 'passed' : 'failed'}`);
+// });

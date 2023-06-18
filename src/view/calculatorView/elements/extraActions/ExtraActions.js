@@ -1,14 +1,22 @@
-import { extraEvents, rootsClassNames, outputClassNames } from '../../classNames/rootsClassNames';
+import {
+  extraEvents,
+  rootsClassNames,
+  outputClassNames,
+  inputClassNames,
+  classNamesForExtraSetting,
+} from '../../classNames/rootsClassNames';
 import { eventsType } from '../../config/config';
 import BaseElement from '../baseElement/BaseElement';
 
 class ExtraActions extends BaseElement {
-  constructor() {
+  constructor(model) {
     super();
+    this.model = model;
   }
 
   setEvents() {
     this.setEventForAlternatingCurrent();
+    this.setEventForEqual(this.model);
   }
 
   setEventForAlternatingCurrent() {
@@ -23,7 +31,18 @@ class ExtraActions extends BaseElement {
     outputField.textContent = '';
   }
 
-  setEventForEqual() {}
+  setEventForEqual(context) {
+    const equal = document.querySelector(`.${classNamesForExtraSetting.equalClassName}`);
+    const exression = document.querySelector(`.${inputClassNames.inputField}`);
+    this.addEventForElement(
+      equal,
+      context.notifyObserver,
+      eventsType.click,
+      context,
+      'newMathExpression',
+      exression,
+    );
+  }
 }
 
 export default ExtraActions;
