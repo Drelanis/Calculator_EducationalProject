@@ -1,4 +1,4 @@
-import extraOperations from '../extraOperations/extraOperations';
+import { extraOperationsUnary } from '../extraOperations/extraOperations';
 import numbers from '../numbers/numbers';
 import operations from '../operations/operations';
 
@@ -10,7 +10,7 @@ const dataSetting = () => {
   Object.values(numbers).forEach(number => {
     allowedButtons.push(number.content);
   });
-  Object.values(extraOperations).forEach(operation => {
+  Object.values(extraOperationsUnary).forEach(operation => {
     allowedButtons.push(operation.content);
   });
 

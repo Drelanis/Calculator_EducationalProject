@@ -10,7 +10,10 @@ import { htmlElements, eventsType } from '../../config/config';
 import iconsClassNames from '../../public/icons';
 import mainClassNames from '../../classNames/mainClassNames';
 import darkThemeClassNames from '../../classNames/darkThemeClassNames';
-import extraOperations from '../../../../calculator/config/extraOperations/extraOperations';
+import {
+  extraOperationsBinary,
+  extraOperationsUnary,
+} from '../../../../calculator/config/extraOperations/extraOperations';
 
 class Options extends BaseElement {
   constructor(mainButtons) {
@@ -21,7 +24,7 @@ class Options extends BaseElement {
   render() {
     const rootElement = this.getElementByClassName(`${rootsClassNames.calculatorOptions}`);
     const toggleThemeContainer = this.renderToggleThemeElement();
-    if (Object.values(extraOperations).length !== 0) {
+    if (Object.values(extraOperationsUnary).length !== 0) {
       const engineerContainer = this.renderEngineerIcon();
       rootElement.append(engineerContainer);
       toggleThemeContainer.style.marginLeft = '0px';
@@ -97,7 +100,7 @@ class Options extends BaseElement {
       numbers.remove();
       topOptions.remove();
       rightOptions.remove();
-      context.renderExtraActions(context);
+      context.renderExtraActions(context, extraOperationsUnary, extraOperationsBinary);
       return;
     }
     const extraActionsButtons = context.getElementByClassName(extraActions.root);
@@ -105,8 +108,9 @@ class Options extends BaseElement {
     context.mainButtons.render();
   }
 
-  renderExtraActions(context) {
+  renderExtraActions(context, extraOperationsUnary, extraOperationsBinary) {
     const container = context.createElement(`${htmlElements.tags.div}`, `${extraActions.root}`);
+    const extraOperations = { ...extraOperationsUnary, ...extraOperationsBinary };
     Object.entries(extraOperations).forEach(element => {
       const newElement = context.createElement(
         `${htmlElements.tags.button}`,
