@@ -1,5 +1,5 @@
 import constants from '../constants/constants';
-import { unaryFunctions } from '../functions/functions';
+import { mainFunctions, unaryFunctions } from '../functions/functions';
 
 const constantRegexp = {
   isOperator: /[+\-*\/\^%=(),]/,
@@ -8,6 +8,13 @@ const constantRegexp = {
   isSqrt: /√(\d+|\([^)]+\))/g,
   putSpaces: /([^[0-9.]{1})/g,
   deleteDoubleSpaces: / {1,}/g,
+};
+
+const validationMainOperators = () => {
+  let operatorString = '';
+  Object.keys(mainFunctions).forEach(operator => (operatorString += operator));
+  const operators = operatorString.split('');
+  return new RegExp(`[${operators.join('')}]{2}`, 'g');
 };
 
 const isIdentifierCreater = functions => {
@@ -28,6 +35,7 @@ const isIdentifierCreater = functions => {
 const createdRegexp = {
   isIdentifier: isIdentifierCreater(unaryFunctions),
   isConstans: isIdentifierCreater(constants),
+  validationMainOperators: validationMainOperators(),
 };
 
 export { constantRegexp, createdRegexp };

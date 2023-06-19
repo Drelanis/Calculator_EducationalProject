@@ -1,3 +1,4 @@
+import constants from '../constants/constants';
 import { extraOperationsBinary, extraOperationsUnary } from '../extraOperations/extraOperations';
 import operations from '../operations/operations';
 
@@ -30,8 +31,16 @@ const addExtraBinaryFunctions = (extraFunctions, functions) => {
   });
 };
 
+const addConstance = (constance, functions) => {
+  Object.entries(constance).forEach(element => {
+    const [content, action] = element;
+    functions[content] = action;
+  });
+};
+
 addMainFunctions(operations, mainFunctions);
 addExtraBinaryFunctions(extraOperationsBinary, mainFunctions);
 addExtraUnaryFunctions(extraOperationsUnary, unaryFunctions);
+addConstance(constants, unaryFunctions);
 
 export { unaryFunctions, mainFunctions };
