@@ -5,11 +5,9 @@ import Model from './model/Model';
 import Controller from './controller/Controller';
 
 const model = new Model();
-console.log(model);
 new Controller(model).controllerInit();
 new CalculatorView(model).render();
 
-console.log(calculate('(2+3)*4'));
 const tests = [
   { number: 1, input: '2-(sin(pi/2)*(-6))', expected: 8 },
   { number: 2, input: '√9+3', expected: 6 },

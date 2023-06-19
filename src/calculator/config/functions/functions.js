@@ -1,22 +1,16 @@
 import { extraOperationsBinary, extraOperationsUnary } from '../extraOperations/extraOperations';
+import operations from '../operations/operations';
 
-const mainFunctions = {
-  '+': (firstOperand, secondOperand) => {
-    return firstOperand + secondOperand;
-  },
-  '-': (firstOperand, secondOperand) => {
-    if (!secondOperand) return -firstOperand;
-    return firstOperand - secondOperand;
-  },
-  '*': (firstOperand, secondOperand) => {
-    return firstOperand * secondOperand;
-  },
-  '/': (firstOperand, secondOperand) => {
-    return firstOperand / secondOperand;
-  },
-};
+const mainFunctions = {};
 
 const unaryFunctions = {};
+
+const addMainFunctions = (operations, mainFunctions) => {
+  Object.values(operations).forEach(operation => {
+    if (operation.customAction || operation.inputAction) return;
+    mainFunctions[operation.content] = operation.action;
+  });
+};
 
 const addExtraUnaryFunctions = (extraFunctions, functions) => {
   Object.values(extraFunctions).forEach(element => {
@@ -36,6 +30,7 @@ const addExtraBinaryFunctions = (extraFunctions, functions) => {
   });
 };
 
+addMainFunctions(operations, mainFunctions);
 addExtraBinaryFunctions(extraOperationsBinary, mainFunctions);
 addExtraUnaryFunctions(extraOperationsUnary, unaryFunctions);
 
