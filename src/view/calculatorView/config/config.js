@@ -54,6 +54,8 @@ const eventsType = {
   click: 'click',
   input: 'input',
   change: 'change',
+  mouseDown: 'mousedown',
+  keyDown: 'keydown',
 };
 
 export { htmlElements, calculator, eventsType };

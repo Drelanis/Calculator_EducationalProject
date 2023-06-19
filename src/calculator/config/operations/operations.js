@@ -26,6 +26,7 @@ const operations = {
   subtraction: {
     content: '-',
     action: (firstOperand, secondOperand) => {
+      if (!secondOperand) return -firstOperand;
       return firstOperand - secondOperand;
     },
   },

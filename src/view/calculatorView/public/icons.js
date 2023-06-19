@@ -4,6 +4,7 @@ const iconsClassNames = {
   historyIcon: 'fa-clock-rotate-left',
   lightThemeIcon: 'fa-sun',
   darkThemeIcon: 'fa-moon',
+  errorIcon: 'fa-triangle-exclamation',
 };
 
 export default iconsClassNames;

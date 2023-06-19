@@ -1,4 +1,5 @@
 import Observer from '../Observer/Observer';
+import ErrorField from '../view/calculatorView/elements/errorField/ErrorField';
 
 class Model extends Observer {
   constructor() {
@@ -6,6 +7,7 @@ class Model extends Observer {
     this.setObserver('newMathExpression');
     this.setObserver('newMathResult');
     this.setObserver('renderError');
+    this.error = new ErrorField();
   }
 }
 
