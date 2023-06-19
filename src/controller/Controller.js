@@ -11,15 +11,21 @@ class Controller {
   }
 
   calculate(input, context) {
-    const exression = input.value;
-    const errorMessage = validationExpression(exression);
-    if (errorMessage !== true) {
-      context.notifyObserver(context, 'renderError', errorMessage);
+    try {
+      const exression = input.value;
+      const errorMessage = validationExpression(exression);
+      if (errorMessage !== true) {
+        context.notifyObserver(context, 'renderError', errorMessage);
+        context.notifyObserver(context, 'newMathResult', 0);
+        return;
+      }
+      const result = calculate(exression);
+      context.notifyObserver(context, 'newMathResult', result);
+    } catch (error) {
+      console.log(error);
+      context.notifyObserver(context, 'renderError', error.message);
       context.notifyObserver(context, 'newMathResult', 0);
-      return;
     }
-    const result = calculate(exression);
-    context.notifyObserver(context, 'newMathResult', result);
   }
 }
 

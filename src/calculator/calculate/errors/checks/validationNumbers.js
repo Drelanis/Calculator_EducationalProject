@@ -9,7 +9,7 @@ const validationNumbers = expression => {
   expression = expression.replace(constantRegexp.deleteDoubleSpaces, ' ');
   expression = expression.replace(createdRegexp.isIdentifier, match => match.replace(/\s/g, ''));
   expression = expression.replace(createdRegexp.isConstans, match => match.replace(/\s/g, ''));
-  const numbersOnly = expression.match(/[\d.]+/g);
+  const numbersOnly = expression.match(/[\d.]+/g) || [];
   if (numbersOnly.length === 0) {
     validExpression = false;
   }

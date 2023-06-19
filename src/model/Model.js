@@ -1,4 +1,4 @@
-import Observer from '../Observer/Observer';
+import Observer from '../observer/Observer';
 import ErrorField from '../view/calculatorView/elements/errorField/ErrorField';
 
 class Model extends Observer {
