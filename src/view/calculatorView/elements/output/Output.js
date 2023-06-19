@@ -1,5 +1,5 @@
 import { outputClassNames, rootsClassNames } from '../../classNames/rootsClassNames';
-import { calculator, htmlElements } from '../../config/config';
+import { calculator, eventsType, htmlElements } from '../../config/config';
 import BaseElement from '../baseElement/BaseElement';
 
 class Output extends BaseElement {
@@ -13,6 +13,7 @@ class Output extends BaseElement {
     const resultFiled = this.createOuputResult();
     outputContainer.append(outputIcon);
     outputContainer.append(resultFiled);
+    this.setCopyFeatures();
   }
 
   createOutputIcon() {
@@ -24,6 +25,15 @@ class Output extends BaseElement {
   createOuputResult() {
     const element = this.createElement(htmlElements.tags.span, outputClassNames.resultField);
     return element;
+  }
+
+  copyFeatures(textForCopy) {
+    navigator.clipboard.writeText(textForCopy);
+  }
+
+  setCopyFeatures() {
+    const element = document.querySelector(`.${outputClassNames.resultField}`);
+    element.addEventListener(eventsType.click, () => this.copyFeatures(element.textContent));
   }
 }
 
