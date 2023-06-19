@@ -40,7 +40,7 @@ const tests = [
   { number: 30, input: '5.5 - 2.2', expected: 3.3 },
 ];
 
-// tests.forEach((test, index) => {
-//   const result = Number(calculate(test.input));
-//   console.log(`Test ${test.number}: ${result === test.expected ? 'passed' : 'failed'}`);
-// });
+tests.forEach((test, index) => {
+  const result = Number(calculate(test.input));
+  console.log(`Test ${test.number}: ${result === test.expected ? 'passed' : 'failed'}`);
+});
