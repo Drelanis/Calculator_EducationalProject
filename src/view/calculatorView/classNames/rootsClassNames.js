@@ -48,6 +48,13 @@ const extraActions = {
   root: 'calculator__control-buttons_extra-actions',
 };
 
+const errorClassNames = {
+  root: 'calculator__expression-input',
+  container: 'calculator__error',
+  containerForIcon: 'calculator__error_icon',
+  text: 'calculator__error_text',
+};
+
 export {
   rootsClassNames,
   optionsClassNames,
@@ -57,4 +64,5 @@ export {
   historyField,
   extraEvents,
   extraActions,
+  errorClassNames,
 };

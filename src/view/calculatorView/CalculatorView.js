@@ -7,6 +7,7 @@ import {
 import { eventsType, htmlElements } from './config/config';
 import BaseElement from './elements/baseElement/BaseElement';
 import ControlButtons from './elements/controlButtons/ControlButtons';
+import ErrorField from './elements/errorField/ErrorField';
 import Input from './elements/input/Input';
 import Options from './elements/options/Options';
 import Output from './elements/output/Output';
@@ -26,7 +27,9 @@ class CalculatorView extends BaseElement {
     new Input().render();
     new Output().render();
     mainButtons.render();
+    const error = new ErrorField();
     this.model.addSubscribe('newMathResult', this.renderResult);
+    this.model.addSubscribe('renderError', error.renderErrorField);
   }
 
   renderResult(result) {

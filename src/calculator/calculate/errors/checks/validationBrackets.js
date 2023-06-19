@@ -1,7 +1,7 @@
 const validationBrackets = expression => {
   const bracketsStack = [];
   const bracketRegex = /\(|\)/g;
-  const bracketes = expression.match(bracketRegex);
+  const bracketes = expression.match(bracketRegex) || [];
   for (let index = 0; index < bracketes.length; index += 1) {
     if (bracketes[index] == '(') {
       bracketsStack.push(')');

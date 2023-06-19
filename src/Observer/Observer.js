@@ -14,8 +14,10 @@ class Observer {
     this.observers[observer].push(subscribe);
   }
 
-  notifyObserver(context, observer, data) {
-    Object.values(context.observers[observer]).forEach(observer => observer(data, context));
+  notifyObserver(context, observer, data, secondContext) {
+    Object.values(context.observers[observer]).forEach(observer =>
+      observer(data, context, secondContext),
+    );
   }
 }
 
