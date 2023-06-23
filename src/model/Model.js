@@ -9,7 +9,6 @@ class Model extends Observer {
     this.addSubscribe('newMathExpression', Controller.calculate);
     this.addSubscribe('newMathResult', CalculatorView.renderResult);
     this.addSubscribe('renderError', ErrorField.renderErrorField);
-    this.error = new ErrorField();
   }
 }
 
