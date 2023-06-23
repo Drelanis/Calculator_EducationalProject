@@ -1,20 +1,28 @@
-import constants from '../constants/constants';
-import { mainFunctions, unaryFunctions } from '../functions/functions';
+import { extraConstance } from '../extraOperations/extraOperations';
+import { unaryFunctions } from '../functions/functions';
 
 const constantRegexp = {
   isOperator: /[+\-*\/\^%=(),]/,
-  isNumber: /[0-9]/,
-  isFactorial: /!(\d+|\([^)]+\))/g,
-  isSqrt: /√(\d+|\([^)]+\))/g,
-  putSpaces: /([^[0-9.]{1})/g,
-  deleteDoubleSpaces: / {1,}/g,
+  isNumber: /\d+(\.\d+)?/,
+  isDynamicNumber: /[-+]?\d+(\.\d+)?/g,
+  isNegative: /^-+\d+(\.\d+)?$/,
+  isSymbolCombination: /(\d+\.?\d*)|([+\-*\/\^%])|(\[.+?\])/g,
+  negativeNumberInBrackets: /\((-?\d+(\.\d+)?)\)/,
+  mostNestedParentheses: /\(([^()]+)\)/g,
+  validationMainOperators: /([/*\-+%^]){2}/,
 };
 
-const validationMainOperators = () => {
-  let operatorString = '';
-  Object.keys(mainFunctions).forEach(operator => (operatorString += operator));
-  const operators = operatorString.split('');
-  return new RegExp(`[${operators.join('')}]{2}`, 'g');
+const isConstanse = constants => {
+  if (!constants) return;
+  let regexpString = '';
+  Object.values(constants).forEach((element, index) => {
+    regexpString += element.content;
+    if (Object.keys(constants).length - 1 === index) {
+      return;
+    }
+    regexpString += '|';
+  });
+  return new RegExp(`(${regexpString})`, 'g');
 };
 
 const isIdentifierCreater = functions => {
@@ -29,13 +37,12 @@ const isIdentifierCreater = functions => {
     }
     regexpString += '|';
   });
-  return new RegExp(`\\b(${regexpString})\\b`, 'g');
+  return new RegExp(`(${regexpString})(\\d+(\\.\\d+)?|\\[-?\\d+(\\.\\d+)?\\])`);
 };
 
 const createdRegexp = {
-  isIdentifier: isIdentifierCreater(unaryFunctions),
-  isConstans: isIdentifierCreater(constants),
-  validationMainOperators: validationMainOperators(),
+  isConstanse: isConstanse(extraConstance),
+  isUnaryRegexp: isIdentifierCreater(unaryFunctions),
 };
 
 export { constantRegexp, createdRegexp };

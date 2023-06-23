@@ -13,26 +13,30 @@ const operations = {
   },
   division: {
     content: '/',
-    action: (firstOperand, secondOperand) => {
+    precedence: 2,
+    operation: (firstOperand, secondOperand) => {
       return firstOperand / secondOperand;
     },
   },
   multiplication: {
     content: '*',
-    action: (firstOperand, secondOperand) => {
+    precedence: 2,
+    operation: (firstOperand, secondOperand) => {
       return firstOperand * secondOperand;
     },
   },
   subtraction: {
     content: '-',
-    action: (firstOperand, secondOperand) => {
+    precedence: 1,
+    operation: (firstOperand, secondOperand) => {
       if (!secondOperand) return -firstOperand;
       return firstOperand - secondOperand;
     },
   },
   addition: {
     content: '+',
-    action: (firstOperand, secondOperand) => {
+    precedence: 1,
+    operation: (firstOperand, secondOperand) => {
       return firstOperand + secondOperand;
     },
   },

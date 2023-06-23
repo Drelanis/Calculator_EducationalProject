@@ -1,11 +1,24 @@
+const extraConstance = {
+  piNumber: {
+    content: 'π',
+    π: () => Math.PI,
+  },
+  exhibitor: {
+    content: 'e',
+    e: () => Math.E,
+  },
+};
+
 const extraOperationsBinary = {
   remainderOfTheDivision: {
     content: '%',
-    action: (firstOperand, secondOperand) => firstOperand % secondOperand,
+    precedence: 2,
+    operation: (firstOperand, secondOperand) => firstOperand % secondOperand,
   },
   degree: {
     content: '^',
-    action: (firstOperand, secondOperand) => Math.pow(firstOperand, secondOperand),
+    precedence: 2,
+    operation: (firstOperand, secondOperand) => Math.pow(firstOperand, secondOperand),
   },
 };
 
@@ -14,12 +27,12 @@ const extraOperationsUnary = {
     content: '()',
   },
   rootOfNumber: {
-    content: '√',
-    sqrt: Math.sqrt,
+    content: '√()',
+    '√': Math.sqrt,
   },
   factorial: {
-    content: '!',
-    fact: number => {
+    content: '!()',
+    '!': number => {
       let result = 1;
       for (let index = 2; index <= number; index += 1) {
         result *= index;
@@ -73,4 +86,4 @@ const extraOperationsUnary = {
   },
 };
 
-export { extraOperationsUnary, extraOperationsBinary };
+export { extraOperationsUnary, extraOperationsBinary, extraConstance };

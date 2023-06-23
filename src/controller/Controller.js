@@ -6,11 +6,7 @@ class Controller {
     this.model = model;
   }
 
-  controllerInit() {
-    this.model.addSubscribe('newMathExpression', this.calculate);
-  }
-
-  calculate(input, context) {
+  static calculate(input, context) {
     try {
       const exression = input.value;
       const errorMessage = validationExpression(exression);
@@ -19,10 +15,8 @@ class Controller {
         context.notifyObserver(context, 'newMathResult', 0);
         return;
       }
-      const result = calculate(exression);
-      context.notifyObserver(context, 'newMathResult', result);
+      context.notifyObserver(context, 'newMathResult', calculate(exression));
     } catch (error) {
-      console.log(error);
       context.notifyObserver(context, 'renderError', error.message);
       context.notifyObserver(context, 'newMathResult', 0);
     }

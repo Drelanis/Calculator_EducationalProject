@@ -1,6 +1,7 @@
 import { constantRegexp, createdRegexp } from '../../../config/regexp/regexp';
 
 const validationNumbers = expression => {
+  if (!expression) return true;
   let validExpression = true;
   const regexValidNumber = /^(?!0\d|\.\d)\d*(\.\d+)?$/;
   expression = expression.replace(constantRegexp.isFactorial, 'fact($1)');

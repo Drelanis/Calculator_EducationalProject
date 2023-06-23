@@ -1,7 +1,6 @@
-import { createdRegexp } from '../../../config/regexp/regexp';
+import { constantRegexp } from '../../../config/regexp/regexp';
 
-const validationMainOperators = expression => {
-  return !createdRegexp.validationMainOperators.test(expression);
-};
+const validationMainOperators = expression =>
+  !constantRegexp.validationMainOperators.test(expression);
 
 export default validationMainOperators;

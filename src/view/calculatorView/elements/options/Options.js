@@ -11,6 +11,7 @@ import iconsClassNames from '../../public/icons';
 import mainClassNames from '../../classNames/mainClassNames';
 import darkThemeClassNames from '../../classNames/darkThemeClassNames';
 import {
+  extraConstance,
   extraOperationsBinary,
   extraOperationsUnary,
 } from '../../../../calculator/config/extraOperations/extraOperations';
@@ -24,7 +25,13 @@ class Options extends BaseElement {
   render() {
     const rootElement = this.getElementByClassName(`${rootsClassNames.calculatorOptions}`);
     const toggleThemeContainer = this.renderToggleThemeElement();
-    if (Object.values(extraOperationsUnary).length !== 0) {
+    if (
+      Object.values({
+        ...extraOperationsUnary,
+        ...extraOperationsBinary,
+        ...extraConstance,
+      }).length !== 0
+    ) {
       const engineerContainer = this.renderEngineerIcon();
       rootElement.append(engineerContainer);
       toggleThemeContainer.style.marginLeft = '0px';
@@ -110,7 +117,11 @@ class Options extends BaseElement {
 
   renderExtraActions(context, extraOperationsUnary, extraOperationsBinary) {
     const container = context.createElement(`${htmlElements.tags.div}`, `${extraActions.root}`);
-    const extraOperations = { ...extraOperationsUnary, ...extraOperationsBinary };
+    const extraOperations = {
+      ...extraOperationsUnary,
+      ...extraOperationsBinary,
+      ...extraConstance,
+    };
     Object.entries(extraOperations).forEach(element => {
       const newElement = context.createElement(
         `${htmlElements.tags.button}`,

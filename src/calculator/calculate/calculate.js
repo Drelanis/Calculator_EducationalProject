@@ -1,12 +1,12 @@
-import lexicalAnalyzer from './lexicalAnalyzer/lexicalAnalyzer';
-import parse from './parse/parse';
-import evaluate from './evaluate/evaluate';
+import calculateBinaryOperations from './calculateBinaryOperations/calculateBinaryOperations.js';
+import calculateParentheses from './calculateParentheses/calculateParentheses.js';
+import findConstants from './findConstants/findConstants.js';
 
-const calculate = input => {
-  const tokens = lexicalAnalyzer(input);
-  const parseTree = parse(tokens);
-  const output = evaluate(parseTree);
-  return output;
+const calculate = expression => {
+  if (!expression) return 0;
+  expression = findConstants(expression);
+  expression = calculateParentheses(expression);
+  return calculateBinaryOperations(expression);
 };
 
 export default calculate;

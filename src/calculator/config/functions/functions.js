@@ -1,5 +1,8 @@
-import constants from '../constants/constants';
-import { extraOperationsBinary, extraOperationsUnary } from '../extraOperations/extraOperations';
+import {
+  extraConstance,
+  extraOperationsBinary,
+  extraOperationsUnary,
+} from '../extraOperations/extraOperations';
 import operations from '../operations/operations';
 
 const mainFunctions = {};
@@ -9,7 +12,10 @@ const unaryFunctions = {};
 const addMainFunctions = (operations, mainFunctions) => {
   Object.values(operations).forEach(operation => {
     if (operation.customAction || operation.inputAction) return;
-    mainFunctions[operation.content] = operation.action;
+    mainFunctions[operation.content] = {
+      precedence: operation.precedence,
+      operation: operation.operation,
+    };
   });
 };
 
@@ -24,23 +30,9 @@ const addExtraUnaryFunctions = (extraFunctions, functions) => {
   });
 };
 
-const addExtraBinaryFunctions = (extraFunctions, functions) => {
-  Object.values(extraFunctions).forEach(element => {
-    const [content, action] = Object.values(element);
-    functions[content] = action;
-  });
-};
-
-const addConstance = (constance, functions) => {
-  Object.entries(constance).forEach(element => {
-    const [content, action] = element;
-    functions[content] = action;
-  });
-};
-
 addMainFunctions(operations, mainFunctions);
-addExtraBinaryFunctions(extraOperationsBinary, mainFunctions);
+addMainFunctions(extraOperationsBinary, mainFunctions);
 addExtraUnaryFunctions(extraOperationsUnary, unaryFunctions);
-addConstance(constants, unaryFunctions);
+addExtraUnaryFunctions(extraConstance, unaryFunctions);
 
 export { unaryFunctions, mainFunctions };

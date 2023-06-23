@@ -4,12 +4,11 @@ import iconsClassNames from '../../public/icons';
 import BaseElement from '../baseElement/BaseElement';
 
 class ErrorField extends BaseElement {
-  constructor(model) {
+  constructor() {
     super();
-    this.model = model;
   }
 
-  renderErrorField(errorMessage) {
+  static renderErrorField(errorMessage) {
     const previusElement = document.querySelector(`.${errorClassNames.root}`);
 
     const errorMessageElement = document.createElement(htmlElements.tags.div);
