@@ -1,5 +1,5 @@
 import calculate from '../calculator/calculate/calculate';
-import validationExpression from '../calculator/calculate/errors/validationExpression';
+import validationExpression from '../calculator/errors/validationExpression';
 
 class Controller {
   constructor(model) {

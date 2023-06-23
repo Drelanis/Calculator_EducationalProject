@@ -161,7 +161,7 @@ class Options extends BaseElement {
     }
     historyButton.classList.toggle(`${darkThemeClassNames.historyDark}`);
     inputContent.classList.toggle(`${darkThemeClassNames.inputFieldDark}`);
-    outputContent.classList.toggle(`${darkThemeClassNames.outputField}`);
+    outputContent.classList.toggle(`${darkThemeClassNames.resultOutputDark}`);
     controlButtons.classList.toggle(`${darkThemeClassNames.controlButtonsDark}`);
     Array.from(mainButton).forEach(button =>
       button.classList.toggle(`${darkThemeClassNames.mainButtonDark}`),

@@ -1,4 +1,4 @@
-import { constantRegexp, createdRegexp } from '../../../config/regexp/regexp';
+import { constantRegexp, createdRegexp } from '../../config/regexp/regexp.js';
 
 const validationNumbers = expression => {
   if (!expression) return true;
