@@ -5,6 +5,7 @@ import BaseElement from '../baseElement/BaseElement';
 class Output extends BaseElement {
   constructor() {
     super();
+    this.render();
   }
 
   render() {

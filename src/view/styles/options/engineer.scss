@@ -8,8 +8,10 @@
     font-size: $main-font-size-for-icons;
     margin: auto;
   }
-  .fa-square-root-variable:hover {
+  .fa-square-root-variable:active {
     font-size: 25px;
+  }
+  .fa-square-root-variable:hover {
     cursor: $main-cursor-type-for-buttons;
   }
 }

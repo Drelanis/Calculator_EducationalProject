@@ -13,8 +13,10 @@
       font-size: $main-font-size-for-icons;
       margin: auto;
     }
-    .fa-clock-rotate-left:hover {
+    .fa-clock-rotate-left:active {
       font-size: 25px;
+    }
+    .fa-clock-rotate-left:hover {
       cursor: $main-cursor-type-for-buttons;
     }
   }

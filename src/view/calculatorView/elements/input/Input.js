@@ -6,6 +6,7 @@ import dataSetting from '../../../../calculator/config/allowedButtons/allowedBut
 class Input extends BaseElement {
   constructor() {
     super();
+    this.render();
   }
 
   render() {

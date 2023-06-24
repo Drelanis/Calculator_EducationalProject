@@ -30,21 +30,21 @@ class ErrorField extends BaseElement {
 
     previusElement.after(errorMessageElement);
 
-    const errorClearMessage = () => {
-      const outputField = document.querySelector(`.${outputClassNames.resultField}`);
-      const errorElement = document.querySelector(`.${errorClassNames.container}`);
-      if (!errorElement) {
-        return;
-      }
-      errorElement.remove();
-      outputField.textContent = '';
-      document.removeEventListener(eventsType.mouseDown, errorClearMessage);
-      document.removeEventListener(eventsType.click, errorClearMessage);
-    };
-
     document.addEventListener(eventsType.mouseDown, () => errorClearMessage());
     document.addEventListener(eventsType.keyDown, () => errorClearMessage());
   }
 }
+
+const errorClearMessage = () => {
+  const outputField = document.querySelector(`.${outputClassNames.resultField}`);
+  const errorElement = document.querySelector(`.${errorClassNames.container}`);
+  if (!errorElement) {
+    return;
+  }
+  errorElement.remove();
+  outputField.textContent = '';
+  document.removeEventListener(eventsType.mouseDown, errorClearMessage);
+  document.removeEventListener(eventsType.click, errorClearMessage);
+};
 
 export default ErrorField;

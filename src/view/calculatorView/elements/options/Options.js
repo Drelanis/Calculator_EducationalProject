@@ -20,6 +20,7 @@ class Options extends BaseElement {
   constructor(mainButtons) {
     super();
     this.mainButtons = mainButtons;
+    this.render();
   }
 
   render() {

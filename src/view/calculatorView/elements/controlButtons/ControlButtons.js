@@ -20,7 +20,7 @@ class ControlButtons extends BaseElement {
     this.renderNumbers();
     this.renderTopOperators();
     this.renderRightOperators();
-    new ExtraActions(this.model).setEvents();
+    new ExtraActions(this.model);
   }
 
   renderNumbers() {

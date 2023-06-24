@@ -18,9 +18,9 @@ class CalculatorView extends BaseElement {
     const calculatorBody = this.createCalculatorBody();
     root.append(calculatorBody);
     const mainButtons = new ControlButtons(this.model);
-    new Options(mainButtons).render();
-    new Input().render();
-    new Output().render();
+    new Options(mainButtons);
+    new Input();
+    new Output();
     mainButtons.render();
   }
 
