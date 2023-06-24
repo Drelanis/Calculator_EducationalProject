@@ -18,15 +18,23 @@
 
 #equal:hover {
   cursor: $main-cursor-type-for-buttons;
+}
+#equal:active {
   background: $darkTheme-main-buttons-hover-background;
 }
 
 .numbers:hover {
   cursor: $main-cursor-type-for-buttons;
+}
+
+.numbers:active {
   background: $lightTheme-main-buttons-hover-background;
 }
 
 .operation:hover {
   cursor: $main-cursor-type-for-buttons;
+}
+
+.operation:active {
   background: $lightTheme-operation-button-background;
 }

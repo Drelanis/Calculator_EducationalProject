@@ -23,19 +23,19 @@
   .operations-background-dark {
     background: $darkTheme-main-buttons-background;
   }
-  .operation-dark:hover {
+  .operation-dark:active {
     background: $darkTheme-main-buttons-background;
   }
   .equals-button-dark {
     background: $darkTheme-equal-button-background;
   }
-  .equal-button-dark:hover {
+  .equal-button-dark:active {
     background: $darkTheme-main-buttons-hover-background;
   }
   .numbers-dark {
     background: $darkTheme-main-buttons-background;
   }
-  .numbers:hover {
+  .numbers:active {
     background: $darkTheme-main-buttons-hover-background;
   }
 }
