@@ -10,7 +10,7 @@ const calculateParentheses = expression => {
       expression = expression.replace(`(${innerExpression})`, `[${innerExpression}]`);
     }
     let innerResult = calculateBinaryOperations(innerExpression);
-    if (innerResult < 0) innerResult = `(${innerResult})`;
+    if (innerResult < 0) innerResult = `[${innerResult}]`;
     expression = expression.replace(`(${innerExpression})`, innerResult);
     if (expression.match(createdRegexp.isUnaryRegexp)) {
       const innerUnaryExpression = expression.match(createdRegexp.isUnaryRegexp);
