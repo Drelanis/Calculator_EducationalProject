@@ -24,8 +24,7 @@ const isConstanse = constants => {
   });
   return new RegExp(`(${regexpString})`, 'g');
 };
-
-const isIdentifierCreater = functions => {
+const unaryOperationsCreaterForRegexp = functions => {
   if (!functions) return;
   let regexpString = '';
   Object.keys(functions).forEach((element, index) => {
@@ -37,12 +36,21 @@ const isIdentifierCreater = functions => {
     }
     regexpString += '|';
   });
-  return new RegExp(`(${regexpString})(\\d+(\\.\\d+)?|\\[-?\\d+(\\.\\d+)?\\])`);
+  return regexpString;
 };
+
+const isIdentifierCreater = functions =>
+  new RegExp(
+    `(${unaryOperationsCreaterForRegexp(functions)})(\\d+(\\.\\d+)?|\\[-?\\d+(\\.\\d+)?\\])`,
+  );
+
+const isUnaryExressionValidation = functions =>
+  new RegExp(`(${unaryOperationsCreaterForRegexp(functions)})\\d+(\\.\\d+)?`, 'g');
 
 const createdRegexp = {
   isConstanse: isConstanse(extraConstance),
   isUnaryRegexp: isIdentifierCreater(unaryFunctions),
+  isUnaryExressionValidation: isUnaryExressionValidation(unaryFunctions),
 };
 
 export { constantRegexp, createdRegexp };
