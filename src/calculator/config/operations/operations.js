@@ -29,7 +29,8 @@ const operations = {
     content: '-',
     precedence: 1,
     operation: (firstOperand, secondOperand) => {
-      if (!secondOperand) return -firstOperand;
+      console.log(secondOperand);
+      if (!secondOperand & (secondOperand !== 0)) return -firstOperand;
       return firstOperand - secondOperand;
     },
   },
